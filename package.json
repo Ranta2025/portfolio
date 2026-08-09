@@ -1,0 +1,18 @@
+{
+  "name": "rafael-tanda-portfolio",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Personal portfolio of Rafael Antonio Tanda Pretel — Backend Engineer",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^7.2.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}
