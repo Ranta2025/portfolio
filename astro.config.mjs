@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // Portfolio — static output for easy hosting anywhere (Vercel, Netlify, GitHub Pages)
 export default defineConfig({
-  site: "https://rafaeltanda.dev",
+  site: "https://portfolio-ten-gamma-xo927n567h.vercel.app",
   output: "static",
   vite: {
     plugins: [tailwindcss()],
