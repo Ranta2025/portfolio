@@ -11,8 +11,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.2.0",
     "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.2.0",
     "tailwindcss": "^4.3.3"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^6.0.3"
   }
 }
