@@ -1,0 +1,27 @@
+---
+import type { Repo } from "../data/projects";
+
+interface Props {
+  repo: Repo;
+}
+
+const { repo } = Astro.props;
+---
+
+{
+  "url" in repo ? (
+    <a class="repo" href={repo.url} rel="noopener noreferrer" target="_blank">
+      Source on GitHub
+    </a>
+  ) : (
+    <span class="badge" title="Private repository. A walkthrough or code sample is available on request.">
+      Private repo · on request
+    </span>
+  )
+}
+
+<style>
+  .repo {
+    color: var(--muted);
+  }
+</style>

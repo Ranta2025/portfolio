@@ -1,0 +1,141 @@
+---
+import "../styles/global.css";
+import { site } from "../data/site";
+import { profile } from "../data/profile";
+
+interface Props {
+  title?: string;
+  description?: string;
+  bare?: boolean;
+}
+
+const { title, description = site.description, bare = false } = Astro.props;
+const pageTitle = title ? `${title} — ${profile.shortName}` : site.title;
+const canonical = new URL(Astro.url.pathname, site.url).toString();
+
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.role,
+  url: site.url,
+  email: `mailto:${profile.email}`,
+  sameAs: [profile.links.github, profile.links.linkedin].filter(Boolean),
+  homeLocation: profile.location.current,
+};
+
+const nav = [
+  { href: "/#work", label: "Work" },
+  { href: "/#about", label: "About" },
+  { href: "/cv/", label: "CV" },
+  { href: "/#contact", label: "Contact" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={site.author} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111312" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"
+    />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(person)} />
+  </head>
+  <body>
+    {
+      bare ? (
+        <slot />
+      ) : (
+        <>
+          <a class="skip-link" href="#main">Skip to content</a>
+          <header class="site-header">
+            <div class="container bar">
+              <a class="brand" href="/">{profile.shortName}</a>
+              <nav aria-label="Primary">
+                <ul>
+                  {nav.map((item) => (
+                    <li>
+                      <a href={item.href}>{item.label}</a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+          </header>
+          <main id="main">
+            <slot />
+          </main>
+          <footer class="site-footer">
+            <div class="container bar">
+              <span class="muted">© {new Date().getFullYear()} {profile.name}</span>
+              <span class="mono muted">Built with Astro · no trackers</span>
+            </div>
+          </footer>
+        </>
+      )
+    }
+  </body>
+</html>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: color-mix(in oklab, var(--bg) 88%, transparent);
+    backdrop-filter: saturate(1.4) blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 3.5rem;
+  }
+  .brand {
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  nav ul {
+    display: flex;
+    gap: clamp(0.875rem, 3vw, 1.75rem);
+    list-style: none;
+    font-size: 0.9375rem;
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--muted);
+  }
+  nav a:hover {
+    color: var(--text);
+  }
+  .site-footer {
+    border-top: 1px solid var(--line);
+    padding-block: 1.5rem;
+    font-size: 0.875rem;
+  }
+  .site-footer .bar {
+    flex-wrap: wrap;
+  }
+</style>
