@@ -40,7 +40,7 @@ const repo = (name: string) => `github.com/Ranta2025/${name}`;
 export const cv: Record<Lang, CvContent> = {
   en: {
     lang: "en",
-    role: "Software Engineer — Backend, offline-first systems & AI-assisted delivery",
+    role: "Software Engineer — Backend-focused full-stack: APIs, frontend & databases",
     location: "Havana, Cuba · relocating to La Palma, Spain",
     authorization: "Spanish citizen · EU work authorization",
     labels: {
@@ -55,7 +55,7 @@ export const cv: Record<Lang, CvContent> = {
       otherLang: "Versión en español",
     },
     summary:
-      "Software engineer who ships complete products for real users, from requirements to tests, packaging and support. Backends in Go and TypeScript; offline-first clients in Flutter, Godot and Python for low-end hardware and unreliable networks. I work AI-first: I direct coding agents through written specs, reviewable units and tests and own every line that ships.",
+      "Software engineer, mostly backend, who also builds the frontend and database of each product, from requirements to tests, packaging and support. APIs and real-time services in Go and TypeScript; React PWA, Flutter, Godot and Python clients, offline-first for low-end hardware; data in PostgreSQL, Redis and SQLite. I work AI-first: I direct coding agents through written specs, reviewable units and tests and own every line that ships.",
     experience: [
       {
         title: "Salon Manager — offline-first mobile app",
@@ -83,7 +83,7 @@ export const cv: Record<Lang, CvContent> = {
     ai: [
       "Agent-driven workflow: requirements become numbered specs; coding agents (Claude Code, opencode) implement them in reviewable units; every change passes tests, multi-lens AI review and my own diff review.",
       "Built agent-bridge (github.com/Ranta2025/agent-bridge, MIT): links Claude Code to gentle-shell agents (orchestrated by gentle-ai) and tracks tasks to completion — state machine with delivery confirmation and retries, policy-driven auto-approver that never allows push, force or secret paths, RAM guard, 197 tests.",
-      "Extended the tools: a Claude Code side-panel mod, an opencode background-agents plugin, and custom skills such as one that makes the agent challenge a design with evidence before building.",
+      "Extended the tools: a Claude Code side-panel mod, an opencode background-agents plugin and custom skills.",
     ],
     projects: [
       {
@@ -92,7 +92,7 @@ export const cv: Record<Lang, CvContent> = {
         stack: "Go, Gin, React 19, PostgreSQL, Redis, MinIO, WebSockets, Docker, Playwright",
         repo: repo("chatapp"),
         bullets: [
-          "Designed a 7-service platform: 1:1 and group chat, receipts, presence, media, voice notes, video calls and Web Push; group permissions enforced server-side.",
+          "Built the Go API, React PWA and PostgreSQL/Redis data of a 7-service platform: 1:1 and group chat, receipts, presence, media, voice notes, video calls and Web Push; group permissions enforced server-side.",
           "Hardened auth (15-min JWTs in HttpOnly cookies, rotated refresh tokens, lockout, rate limits); PWA offline outbox delivers queued messages in order; 276 test files plus Playwright e2e in CI.",
         ],
       },
@@ -108,8 +108,9 @@ export const cv: Record<Lang, CvContent> = {
     ],
     skills: [
       { area: "Languages", items: "Go, TypeScript, Python, Dart, GDScript, Java" },
-      { area: "Backend & data", items: "Gin, REST, WebSockets, PostgreSQL, Redis, SQLite, PocketBase, S3/MinIO" },
-      { area: "Clients", items: "React 19, PWA (service workers, IndexedDB, Web Push), Flutter, Godot 4" },
+      { area: "Backend", items: "Gin, REST, WebSockets, JWT auth, PocketBase" },
+      { area: "Frontend", items: "React 19, PWA (service workers, IndexedDB, Web Push), Flutter, Godot 4" },
+      { area: "Databases", items: "PostgreSQL, Redis, SQLite, IndexedDB, S3/MinIO, schemas & migrations" },
       { area: "AI tooling", items: "Claude Code, opencode, MCP, agent skills/hooks/plugins, spec-driven dev, AI review" },
       { area: "Quality & delivery", items: "go test, Playwright, pytest, GUT, GitHub Actions, Docker Compose, Nginx, Caddy" },
     ],
@@ -119,7 +120,7 @@ export const cv: Record<Lang, CvContent> = {
   },
   es: {
     lang: "es",
-    role: "Ingeniero de software — Backend, sistemas offline-first y desarrollo asistido por IA",
+    role: "Ingeniero de software — Full-stack con foco en backend: APIs, frontend y bases de datos",
     location: "La Habana, Cuba · traslado a La Palma, España",
     authorization: "Ciudadano español · permiso de trabajo en la UE",
     labels: {
@@ -134,7 +135,7 @@ export const cv: Record<Lang, CvContent> = {
       otherLang: "English version",
     },
     summary:
-      "Ingeniero de software que entrega productos completos a usuarios reales, desde los requisitos hasta las pruebas, el empaquetado y el soporte. Backends en Go y TypeScript; clientes offline-first en Flutter, Godot y Python para hardware modesto y redes poco fiables. Trabajo con IA como primera herramienta: dirijo agentes de código con especificaciones, unidades revisables y pruebas y respondo por cada línea entregada.",
+      "Ingeniero de software, sobre todo backend, que también hace el frontend y la base de datos de cada producto, de los requisitos a las pruebas, el empaquetado y el soporte. APIs y servicios en tiempo real en Go y TypeScript; clientes en React (PWA), Flutter, Godot y Python, offline-first para hardware modesto; datos en PostgreSQL, Redis y SQLite. Trabajo con IA: dirijo agentes de código con especificaciones y pruebas, y respondo por cada línea entregada.",
     experience: [
       {
         title: "Gestión Salón — app móvil offline-first",
@@ -154,15 +155,15 @@ export const cv: Record<Lang, CvContent> = {
         stack: "Python, tkinter, pytest, PyInstaller",
         repo: repo("fondo-salario-acuerdo-10199"),
         bullets: [
-          "Convertí una normativa cubana de 2025 en una app de escritorio offline que reparte el fondo de salario no ejecutado, con pesos configurables por unidad.",
-          "Totales que cuadran al céntimo (mayor resto); dominio aislado con más de 100 pruebas en pytest; exportación auditable a Excel.",
+          "Convertí una normativa cubana de 2025 en una app offline que reparte el fondo de salario no ejecutado, con pesos por unidad.",
+          "Totales que cuadran al céntimo (mayor resto); dominio aislado con 100+ pruebas en pytest; exportación a Excel.",
         ],
       },
     ],
     ai: [
       "Flujo dirigido por agentes: requisitos en especificaciones numeradas; agentes de código (Claude Code, opencode) las implementan por unidades revisables; cada cambio pasa pruebas, revisión por IA y mi revisión del diff.",
-      "Construí agent-bridge (github.com/Ranta2025/agent-bridge, MIT): conecta Claude Code con los agentes de gentle-shell (orquestados en el entorno de gentle-ai) y sigue las tareas delegadas hasta el final — máquina de estados con confirmación de entrega y reintentos, autoaprobador por políticas que nunca permite push, force ni rutas de secretos, límite de RAM, 197 pruebas.",
-      "Extendí las herramientas: un mod de panel lateral para Claude Code, un plugin de agentes en segundo plano para opencode y skills propias, como una que obliga al agente a cuestionar el diseño con evidencia.",
+      "Construí agent-bridge (github.com/Ranta2025/agent-bridge, MIT): conecta Claude Code con agentes de gentle-shell (orquestados por gentle-ai) y sigue las tareas hasta el final — máquina de estados con confirmación y reintentos, autoaprobador por políticas que nunca permite push, force ni rutas de secretos, límite de RAM, 197 pruebas.",
+      "Extendí las herramientas: un mod de panel lateral para Claude Code, un plugin de agentes en segundo plano para opencode y skills propias.",
     ],
     projects: [
       {
@@ -171,7 +172,7 @@ export const cv: Record<Lang, CvContent> = {
         stack: "Go, Gin, React 19, PostgreSQL, Redis, MinIO, WebSockets, Docker, Playwright",
         repo: repo("chatapp"),
         bullets: [
-          "Plataforma de 7 servicios: chat 1:1 y grupal, confirmaciones, presencia, multimedia, notas de voz, videollamadas y Web Push; permisos de grupo validados en el servidor.",
+          "API en Go, PWA en React y datos en PostgreSQL/Redis (7 servicios): chat 1:1 y grupal, confirmaciones, presencia, multimedia, notas de voz, videollamadas y Web Push; permisos de grupo en el servidor.",
           "Autenticación reforzada (JWT de 15 min en cookies HttpOnly, refresh tokens rotados, bloqueo, límites por IP); cola offline en la PWA que entrega en orden; 276 archivos de pruebas y e2e con Playwright en CI.",
         ],
       },
@@ -187,8 +188,9 @@ export const cv: Record<Lang, CvContent> = {
     ],
     skills: [
       { area: "Lenguajes", items: "Go, TypeScript, Python, Dart, GDScript, Java" },
-      { area: "Backend y datos", items: "Gin, REST, WebSockets, PostgreSQL, Redis, SQLite, PocketBase, S3/MinIO" },
-      { area: "Clientes", items: "React 19, PWA (service workers, IndexedDB, Web Push), Flutter, Godot 4" },
+      { area: "Backend", items: "Gin, REST, WebSockets, autenticación JWT, PocketBase" },
+      { area: "Frontend", items: "React 19, PWA (service workers, IndexedDB, Web Push), Flutter, Godot 4" },
+      { area: "Bases de datos", items: "PostgreSQL, Redis, SQLite, IndexedDB, S3/MinIO, esquemas y migraciones" },
       { area: "Herramientas de IA", items: "Claude Code, opencode, MCP, skills/hooks/plugins de agentes, especificaciones, revisión con IA" },
       { area: "Calidad y entrega", items: "go test, Playwright, pytest, GUT, GitHub Actions, Docker Compose, Nginx, Caddy" },
     ],

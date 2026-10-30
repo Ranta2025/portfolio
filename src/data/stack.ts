@@ -6,13 +6,14 @@ export interface StackGroup {
 // Only technologies with public evidence in the repositories linked from this site.
 export const stack: StackGroup[] = [
   { area: "Languages", items: ["Go", "TypeScript", "Python", "Dart", "GDScript", "Java"] },
+  { area: "Backend", items: ["Gin", "REST", "WebSockets", "JWT auth", "PocketBase"] },
   {
-    area: "Backend & data",
-    items: ["Gin", "REST", "WebSockets", "PostgreSQL", "Redis", "SQLite", "PocketBase", "MinIO (S3)"],
+    area: "Frontend & clients",
+    items: ["React 19", "PWA (service workers, IndexedDB, Web Push)", "Flutter", "Godot 4", "tkinter"],
   },
   {
-    area: "Clients",
-    items: ["React 19", "PWA (service workers, IndexedDB, Web Push)", "Flutter", "Godot 4", "tkinter"],
+    area: "Databases & storage",
+    items: ["PostgreSQL", "Redis", "SQLite", "IndexedDB", "MinIO (S3)", "Schema design & migrations", "Backup & restore"],
   },
   {
     area: "AI tooling",
