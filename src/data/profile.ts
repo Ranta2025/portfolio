@@ -20,7 +20,7 @@ export const profile: Profile = {
   headline:
     "I build software that keeps working when the network, the hardware and the budget don't.",
   intro:
-    "Backend in Go and TypeScript, offline-first apps in Flutter, Godot and Python. Most of what I ship runs on low-end Android phones and office PCs with no reliable connection, so I design for failure first: local data as the source of truth, explicit sync, tests against real databases and hard performance budgets. I work AI-first: coding agents implement from my written specs, and I built my own tooling to orchestrate them.",
+    "Backend in Go and TypeScript, offline-first apps in Flutter, Godot and Python. Most of what I ship runs on low-end Android phones and office PCs with no reliable connection, so I design for failure first: local data as the source of truth, explicit sync, tests against real databases and hard performance budgets. I work AI-first: coding agents implement from my written specs, and I review every change before it lands.",
   location: { current: "Havana, Cuba", next: "La Palma, Spain" },
   workAuthorization: "Spanish citizen — authorized to work in the EU, no visa required",
   availability: "Open to remote and on-site roles",

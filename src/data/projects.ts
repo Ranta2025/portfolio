@@ -288,7 +288,7 @@ export const sideProjects: SideProject[] = [
   {
     title: "agent-bridge",
     summary:
-      "Hands tasks from Claude Code to opencode or gentle-shell agents running in other terminal panes and tracks them to completion: file-based state machine with delivery confirmation and retries, a policy-driven auto-approver that never allows push, force or secret paths, and a RAM guard. 197 tests against a fake multiplexer.",
+      "Connects Claude Code with gentle-shell: hands tasks to agents running in other terminal panes and tracks them to completion. The agent orchestration and environment are gentle-ai's; agent-bridge is the link. It adds a file-based state machine with delivery confirmation and retries, a policy-driven auto-approver that never allows push, force or secret paths, and a RAM guard. 197 tests against a fake multiplexer.",
     stack: ["Bash", "Python", "herdr", "Claude Code", "opencode"],
     repo: gh("agent-bridge"),
     status: "Open source · MIT",
@@ -300,17 +300,5 @@ export const sideProjects: SideProject[] = [
     stack: ["TypeScript", "Node.js", "Ed25519"],
     repo: privateRepo,
     status: "Product in development",
-  },
-  {
-    title: "Math III exam prep",
-    summary: "Interactive site with step-by-step theory and auto-graded exercises.",
-    stack: ["JavaScript"],
-    repo: gh("matematica-iii-suficiencia"),
-  },
-  {
-    title: "Data Structures II study guide",
-    summary: "220+ bilingual Java exercises: heaps, hashing, skip lists, graphs, union-find.",
-    stack: ["Java"],
-    repo: gh("data-structures-ii-study-guide"),
   },
 ];
