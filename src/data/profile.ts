@@ -1,36 +1,38 @@
 export interface Profile {
   name: string;
-  firstName: string;
+  shortName: string;
   role: string;
-  tagline: string;
-  bio: string;
-  location: { current: string; target: string };
+  headline: string;
+  intro: string;
+  location: { current: string; next: string };
+  workAuthorization: string;
+  availability: string;
   email: string;
-  socials: {
-    github: string;
-    instagram?: string;
-    linkedin?: string;
-    twitter?: string;
-  };
-  citizenship: string[];
+  links: { github: string; linkedin?: string };
+  education: { degree: string; school: string; status: string };
+  languages: string[];
 }
 
 export const profile: Profile = {
   name: "Rafael Antonio Tanda Pretel",
-  firstName: "Rafael",
-  role: "Backend Engineer",
-  tagline:
-    "Building robust, real-time backend systems. Available for work in Spain soon.",
-  bio: `I'm a backend engineer and 3rd-year Ingeniería en Ciencias Informáticas student in Havana, Cuba, with hands-on experience designing distributed systems in Go and TypeScript. My flagship project, WhatsApp-Fake, ships 7 Docker services — WebSocket real-time chat, JWT auth with bcrypt + lockout, MinIO multimedia, and ZegoCloud videocalls.
-
-I hold dual Cuban and Spanish citizenship. Dual nationality is an asset: it gives me mobility across the EU and a wider perspective on how teams ship software under different constraints.
-
-I'm relocating to La Palma, Spain in the coming months and I'm available for both remote and on-site roles. I care about clean architecture, observability, and shipping things that actually run in production.`,
-  location: { current: "Havana, Cuba", target: "La Palma, Spain" },
+  shortName: "Rafael Tanda",
+  role: "Software Engineer",
+  headline:
+    "I build software that keeps working when the network, the hardware and the budget don't.",
+  intro:
+    "Backend in Go and TypeScript, offline-first apps in Flutter, Godot and Python. Most of what I ship runs on low-end Android phones and office PCs with no reliable connection, so I design for failure first: local data as the source of truth, explicit sync, tests against real databases and hard performance budgets.",
+  location: { current: "Havana, Cuba", next: "La Palma, Spain" },
+  workAuthorization: "Spanish citizen — authorized to work in the EU, no visa required",
+  availability: "Open to remote and on-site roles",
   email: "tandapretelrafael2005@gmail.com",
-  socials: {
+  links: {
     github: "https://github.com/Ranta2025",
-    instagram: "https://instagram.com/r_tanda",
+    // TODO: add LinkedIn URL once the profile exists.
   },
-  citizenship: ["Cuban", "Spanish"],
+  education: {
+    degree: "B.Eng. in Computer Science (Ingeniería en Ciencias Informáticas)",
+    school: "University of Information Sciences (UCI), Havana",
+    status: "3rd of 4 years, expected 2028",
+  },
+  languages: ["Spanish — native", "English — B1 (certification exam March 2027)"],
 };

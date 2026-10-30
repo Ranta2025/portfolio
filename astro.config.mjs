@@ -1,12 +1,9 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-import tailwindcss from "@tailwindcss/vite";
 
-// Portfolio — static output for easy hosting anywhere (Vercel, Netlify, GitHub Pages)
+// Static output: deployable to GitHub Pages, Netlify, Vercel or any file server.
+// Keep in sync with src/data/site.ts. Update if the Vercel project gets another name.
 export default defineConfig({
-  site: "https://rafaeltanda.dev",
+  site: "https://rafael-tanda.vercel.app",
   output: "static",
-  vite: {
-    plugins: [tailwindcss()],
-  },
 });

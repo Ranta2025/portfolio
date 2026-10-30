@@ -2,17 +2,13 @@ export interface SiteConfig {
   title: string;
   description: string;
   url: string;
-  ogImage?: string;
   author: string;
-  locale: string;
 }
 
 export const site: SiteConfig = {
-  title: "Rafael Tanda — Backend Engineer",
+  title: "Rafael Tanda — Software Engineer",
   description:
-    "Backend engineer specializing in Go, TypeScript, and real-time distributed systems. 3rd-year CS student, relocating to Spain, available for remote and on-site roles.",
-  url: "https://rafaeltanda.dev",
-  author: "Rafael Tanda",
-  locale: "en",
-  ogImage: "/avatar.svg",
+    "Software engineer building backend and offline-first systems that keep working on low-end hardware and unreliable networks. Go, TypeScript, Flutter, Godot, Python.",
+  url: "https://rafael-tanda.vercel.app",
+  author: "Rafael Antonio Tanda Pretel",
 };
