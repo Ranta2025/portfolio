@@ -286,6 +286,14 @@ export const caseStudies: CaseStudy[] = [
 
 export const sideProjects: SideProject[] = [
   {
+    title: "agent-bridge",
+    summary:
+      "Hands tasks from Claude Code to opencode or gentle-shell agents running in other terminal panes and tracks them to completion: file-based state machine with delivery confirmation and retries, a policy-driven auto-approver that never allows push, force or secret paths, and a RAM guard. 197 tests against a fake multiplexer.",
+    stack: ["Bash", "Python", "herdr", "Claude Code", "opencode"],
+    repo: gh("agent-bridge"),
+    status: "Open source · MIT",
+  },
+  {
     title: "XILEF licensing",
     summary:
       "Offline license system for a commercial product I'm building. Ed25519-signed licenses bound to the customer's machine, monotonic sequence numbers for renewal and revocation, and every artifact self-verified before it is written.",

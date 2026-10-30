@@ -15,6 +15,10 @@ export const stack: StackGroup[] = [
     items: ["React 19", "PWA (service workers, IndexedDB, Web Push)", "Flutter", "Godot 4", "tkinter"],
   },
   {
+    area: "AI tooling",
+    items: ["Claude Code", "opencode", "MCP servers", "Agent skills, hooks & plugins", "Spec-driven development", "AI code review"],
+  },
+  {
     area: "Quality & delivery",
     items: ["go test", "Playwright", "pytest", "GUT", "GitHub Actions", "Docker Compose", "Nginx", "Caddy"],
   },
