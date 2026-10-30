@@ -12,6 +12,11 @@ const { lang } = Astro.props;
 const c = cv[lang];
 const otherHref = lang === "en" ? "/cv/es/" : "/cv/";
 const siteHost = new URL(site.url).host;
+// Client work leads, then the AI section, then personal projects.
+const entryGroups = [
+  { label: c.labels.experience, items: c.experience, after: "ai" },
+  { label: c.labels.projects, items: c.projects },
+];
 ---
 
 <Base title="CV" description={`${profile.name} — ${c.role}`} bare>
@@ -43,24 +48,37 @@ const siteHost = new URL(site.url).host;
       <p>{c.summary}</p>
     </section>
 
-    <section>
-      <h2>{c.labels.projects}</h2>
-      {
-        c.projects.map((p) => (
-          <div class="cv-item">
-            <div class="cv-item-head">
-              <h3>{p.title}</h3>
-              <span class="cv-period">{p.period}</span>
-            </div>
-            <p class="cv-stack">
-              {p.stack}
-              {p.repo && <> · <a href={`https://${p.repo}`}>{p.repo}</a></>}
-            </p>
-            <ul>{p.bullets.map((b) => <li>{b}</li>)}</ul>
-          </div>
-        ))
-      }
-    </section>
+    {
+      entryGroups.map((group) => (
+        <>
+          <section>
+            <h2>{group.label}</h2>
+            {group.items.map((p) => (
+              <div class="cv-item">
+                <div class="cv-item-head">
+                  <h3>
+                    {p.title}
+                    {p.client && <span class="cv-client"> · {p.client}</span>}
+                  </h3>
+                  <span class="cv-period">{p.period}</span>
+                </div>
+                <p class="cv-stack">
+                  {p.stack}
+                  {p.repo && <> · <a href={`https://${p.repo}`}>{p.repo}</a></>}
+                </p>
+                <ul>{p.bullets.map((b) => <li>{b}</li>)}</ul>
+              </div>
+            ))}
+          </section>
+          {group.after === "ai" && (
+            <section>
+              <h2>{c.labels.ai}</h2>
+              <ul class="cv-ai">{c.ai.map((b) => <li>{b}</li>)}</ul>
+            </section>
+          )}
+        </>
+      ))
+    }
 
     <section>
       <h2>{c.labels.skills}</h2>
@@ -76,16 +94,15 @@ const siteHost = new URL(site.url).host;
       </dl>
     </section>
 
-    <div class="cv-two">
-      <section>
-        <h2>{c.labels.education}</h2>
-        <p>{c.education}</p>
-      </section>
-      <section>
-        <h2>{c.labels.languages}</h2>
-        <p>{c.languages.join(" · ")}</p>
-      </section>
-    </div>
+    <section>
+      <h2>{c.labels.education} · {c.labels.languages}</h2>
+      <dl class="cv-skills">
+        <dt>{c.labels.education}</dt>
+        <dd>{c.education}</dd>
+        <dt>{c.labels.languages}</dt>
+        <dd>{c.languages.join(" · ")}</dd>
+      </dl>
+    </section>
   </article>
 </Base>
 
@@ -156,7 +173,7 @@ const siteHost = new URL(site.url).host;
     color: #b5b5bb;
   }
   section {
-    margin-top: 3.4mm;
+    margin-top: 2.5mm;
   }
   h2 {
     margin-bottom: 1.8mm;
@@ -173,7 +190,7 @@ const siteHost = new URL(site.url).host;
     break-inside: avoid;
   }
   .cv-item + .cv-item {
-    margin-top: 2.6mm;
+    margin-top: 2mm;
   }
   .cv-item-head {
     display: flex;
@@ -201,8 +218,16 @@ const siteHost = new URL(site.url).host;
     margin-top: 1mm;
     padding-left: 4mm;
   }
-  .cv-item li + li {
+  .cv-item li + li,
+  .cv-ai li + li {
     margin-top: 0.6mm;
+  }
+  .cv-client {
+    font-weight: 500;
+    color: #0f6b4f;
+  }
+  .cv-ai {
+    padding-left: 4mm;
   }
   .cv-skills {
     display: grid;
@@ -216,19 +241,13 @@ const siteHost = new URL(site.url).host;
   .cv-skills dd {
     margin: 0;
   }
-  .cv-two {
-    display: grid;
-    grid-template-columns: 1.7fr 1fr;
-    gap: 6mm;
-  }
 
   @media (max-width: 40rem) {
     .cv-item-head {
       flex-direction: column;
       gap: 0;
     }
-    .cv-skills,
-    .cv-two {
+    .cv-skills {
       grid-template-columns: 1fr;
     }
   }
@@ -247,7 +266,7 @@ const siteHost = new URL(site.url).host;
     .sheet {
       width: 210mm;
       margin: 0;
-      padding: 10mm 13mm;
+      padding: 6mm 12mm;
       box-shadow: none;
     }
   }
