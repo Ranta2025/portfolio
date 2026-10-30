@@ -55,7 +55,7 @@ export const cv: Record<Lang, CvContent> = {
       otherLang: "Versión en español",
     },
     summary:
-      "Software engineer who ships complete products for real users, from requirements to tests, packaging and support. Backends in Go and TypeScript; offline-first clients in Flutter, Godot and Python for low-end hardware and unreliable networks. I work AI-first: I direct coding agents through written specs, reviewable units and tests, built my own tooling to orchestrate them, and own every line that ships.",
+      "Software engineer who ships complete products for real users, from requirements to tests, packaging and support. Backends in Go and TypeScript; offline-first clients in Flutter, Godot and Python for low-end hardware and unreliable networks. I work AI-first: I direct coding agents through written specs, reviewable units and tests and own every line that ships.",
     experience: [
       {
         title: "Salon Manager — offline-first mobile app",
@@ -82,7 +82,7 @@ export const cv: Record<Lang, CvContent> = {
     ],
     ai: [
       "Agent-driven workflow: requirements become numbered specs; coding agents (Claude Code, opencode) implement them in reviewable units; every change passes tests, multi-lens AI review and my own diff review.",
-      "Built agent-bridge (github.com/Ranta2025/agent-bridge, MIT): delegates tasks from Claude Code to other agents and tracks them to completion — state machine with delivery confirmation and retries, policy-driven auto-approver that never allows push, force or secret paths, RAM guard, 197 tests.",
+      "Built agent-bridge (github.com/Ranta2025/agent-bridge, MIT): links Claude Code to gentle-shell agents (orchestrated by gentle-ai) and tracks tasks to completion — state machine with delivery confirmation and retries, policy-driven auto-approver that never allows push, force or secret paths, RAM guard, 197 tests.",
       "Extended the tools: a Claude Code side-panel mod, an opencode background-agents plugin, and custom skills such as one that makes the agent challenge a design with evidence before building.",
     ],
     projects: [
@@ -134,7 +134,7 @@ export const cv: Record<Lang, CvContent> = {
       otherLang: "English version",
     },
     summary:
-      "Ingeniero de software que entrega productos completos a usuarios reales, desde los requisitos hasta las pruebas, el empaquetado y el soporte. Backends en Go y TypeScript; clientes offline-first en Flutter, Godot y Python para hardware modesto y redes poco fiables. Trabajo con IA como primera herramienta: dirijo agentes de código con especificaciones, unidades revisables y pruebas, construí mis herramientas para orquestarlos y respondo por cada línea entregada.",
+      "Ingeniero de software que entrega productos completos a usuarios reales, desde los requisitos hasta las pruebas, el empaquetado y el soporte. Backends en Go y TypeScript; clientes offline-first en Flutter, Godot y Python para hardware modesto y redes poco fiables. Trabajo con IA como primera herramienta: dirijo agentes de código con especificaciones, unidades revisables y pruebas y respondo por cada línea entregada.",
     experience: [
       {
         title: "Gestión Salón — app móvil offline-first",
@@ -161,7 +161,7 @@ export const cv: Record<Lang, CvContent> = {
     ],
     ai: [
       "Flujo dirigido por agentes: requisitos en especificaciones numeradas; agentes de código (Claude Code, opencode) las implementan por unidades revisables; cada cambio pasa pruebas, revisión por IA y mi revisión del diff.",
-      "Construí agent-bridge (github.com/Ranta2025/agent-bridge, MIT): delega tareas de Claude Code en otros agentes y las sigue hasta el final — máquina de estados con confirmación de entrega y reintentos, autoaprobador por políticas que nunca permite push, force ni rutas de secretos, límite de RAM, 197 pruebas.",
+      "Construí agent-bridge (github.com/Ranta2025/agent-bridge, MIT): conecta Claude Code con los agentes de gentle-shell (orquestados en el entorno de gentle-ai) y sigue las tareas delegadas hasta el final — máquina de estados con confirmación de entrega y reintentos, autoaprobador por políticas que nunca permite push, force ni rutas de secretos, límite de RAM, 197 pruebas.",
       "Extendí las herramientas: un mod de panel lateral para Claude Code, un plugin de agentes en segundo plano para opencode y skills propias, como una que obliga al agente a cuestionar el diseño con evidencia.",
     ],
     projects: [
