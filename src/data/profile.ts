@@ -16,11 +16,10 @@ export interface Profile {
 export const profile: Profile = {
   name: "Rafael Antonio Tanda Pretel",
   shortName: "Rafael Tanda",
-  role: "Software Engineer",
-  headline:
-    "I build software that keeps working when the network, the hardware and the budget don't.",
+  role: "Full-Stack Software Engineer",
+  headline: "Full-stack engineer shipping real products with AI agents in the loop.",
   intro:
-    "Backend in Go and TypeScript, offline-first apps in Flutter, Godot and Python. Most of what I ship runs on low-end Android phones and office PCs with no reliable connection, so I design for failure first: local data as the source of truth, explicit sync, tests against real databases and hard performance budgets. I work AI-first: coding agents implement from my written specs, and I built my own tooling to orchestrate them.",
+    "Go and TypeScript backends, React web apps, Flutter mobile apps and desktop tools, delivered end to end for real clients. I work AI-native: coding agents implement from my specs, every change passes tests and my own review, and I built open-source tooling to orchestrate them.",
   location: { current: "Havana, Cuba", next: "La Palma, Spain" },
   workAuthorization: "Spanish citizen — authorized to work in the EU, no visa required",
   availability: "Open to remote and on-site roles",

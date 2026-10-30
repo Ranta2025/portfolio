@@ -6,9 +6,9 @@ export interface SiteConfig {
 }
 
 export const site: SiteConfig = {
-  title: "Rafael Tanda — Software Engineer",
+  title: "Rafael Tanda — Full-Stack Software Engineer",
   description:
-    "Software engineer building backend and offline-first systems that keep working on low-end hardware and unreliable networks. Go, TypeScript, Flutter, Godot, Python.",
+    "Full-stack software engineer: Go and TypeScript backends, React, Flutter and desktop apps shipped end to end for real clients, built AI-native with coding agents and open-source agent tooling.",
   url: "https://rafael-tanda.vercel.app",
   author: "Rafael Antonio Tanda Pretel",
 };

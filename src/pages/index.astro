@@ -14,12 +14,12 @@ const heroPhone = work.find((w) => w.study.slug === "salon-manager")?.shots[0];
 
 const principles = [
   {
-    title: "Local first, network second",
-    body: "The device holds the truth. Sync is explicit, queued and safe to retry, so a lost connection is a normal state, not an error.",
+    title: "Ship the whole thing",
+    body: "Requirements with the client, architecture, tests, packaging and support. A feature is done when someone can use it, not when it compiles.",
   },
   {
-    title: "Budgets before features",
-    body: "Target hardware, APK size, frame time and draw calls are written down before the first scene. If it doesn't fit, it doesn't ship.",
+    title: "Local first, network second",
+    body: "The device holds the truth. Sync is explicit, queued and safe to retry, so a lost connection is a normal state, not an error.",
   },
   {
     title: "Decisions on paper",
@@ -29,10 +29,19 @@ const principles = [
     title: "Tests against real things",
     body: "Real SQLite in memory, real Postgres in integration, real browsers in e2e. Mocks only where the boundary is truly external.",
   },
-  {
-    title: "Agents type, I own the result",
-    body: "Coding agents write most of the first draft from my specs. Every change still lands in small units, behind tests and a review of the diff, before it merges.",
-  },
+];
+
+const aiWorkflow = [
+  { step: "Spec", body: "Requirements become numbered specs and task files, with the user's exact examples." },
+  { step: "Delegate", body: "Coding agents implement each task in a small, reviewable unit on its own branch." },
+  { step: "Verify", body: "Tests, a multi-lens AI review and a read of the diff before anything merges." },
+  { step: "Own", body: "I answer for every line that ships, whoever typed it." },
+];
+
+const bridgeFacts = [
+  { value: "197", label: "tests against a fake terminal multiplexer" },
+  { value: "8", label: "task states, from queued to done or stalled" },
+  { value: "0", label: "pushes, force flags or secret paths it will approve" },
 ];
 ---
 
@@ -74,7 +83,7 @@ const principles = [
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">Selected work</p>
-        <h2 class="section-title">Four systems, four sets of constraints</h2>
+        <h2 class="section-title">Products shipped end to end</h2>
       </div>
 
       <ol class="work-list">
@@ -140,6 +149,55 @@ const principles = [
     </div>
   </section>
 
+  <section id="ai" class="section ai-section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">AI-native engineering</p>
+        <h2 class="section-title">Agents do the typing. I own the result.</h2>
+      </div>
+      <div class="ai-grid">
+        <ol class="ai-flow">
+          {
+            aiWorkflow.map((w, i) => (
+              <li>
+                <span class="mono principle-index">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{w.step}</h3>
+                <p class="muted">{w.body}</p>
+              </li>
+            ))
+          }
+        </ol>
+        <article class="bridge">
+          <p class="side-name">
+            <a href="https://github.com/Ranta2025/agent-bridge" rel="noopener noreferrer" target="_blank">agent-bridge</a>
+            <span class="badge">Open source · MIT</span>
+          </p>
+          <p class="muted">
+            The tool I built to run that workflow. It hands tasks from Claude Code to opencode or gentle-shell agents in
+            other terminal panes, confirms they picked them up and tracks them to completion, with a policy-driven
+            auto-approver and a RAM guard so agents can work unattended without doing anything risky.
+          </p>
+          <ul class="bridge-facts">
+            {
+              bridgeFacts.map((f) => (
+                <li>
+                  <strong>{f.value}</strong>
+                  <span class="muted">{f.label}</span>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="muted bridge-extra">
+            Plus a Claude Code side-panel mod, an opencode background-agents plugin and custom agent skills.
+          </p>
+          <ul class="tags">
+            {["Bash", "Python", "herdr", "Claude Code", "opencode"].map((t) => <li>{t}</li>)}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section id="about" class="section">
     <div class="container">
       <div class="section-head">
@@ -191,8 +249,8 @@ const principles = [
   <section id="contact" class="section contact-section">
     <div class="container contact">
       <p class="eyebrow">Contact</p>
-      <h2 class="contact-title">Building something that has to work offline, or under pressure?</h2>
-      <p class="muted prose">I answer every email. Tell me what you are building and what is getting in the way.</p>
+      <h2 class="contact-title">Building a product and need someone to ship it end to end?</h2>
+      <p class="muted prose">I answer every email. Tell me what you are building and where you need a hand: backend, web, mobile or AI tooling.</p>
       <p class="contact-email">
         <a href={`mailto:${profile.email}`}>{profile.email}</a>
       </p>
@@ -420,6 +478,77 @@ const principles = [
   }
   .principles h3 {
     font-size: 1.0625rem;
+  }
+  .ai-section {
+    background: var(--panel);
+  }
+  .ai-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: start;
+  }
+  @media (min-width: 56rem) {
+    .ai-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 4rem;
+    }
+  }
+  .ai-flow {
+    display: grid;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .ai-flow li {
+    display: grid;
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    column-gap: 0.75rem;
+    row-gap: 0.25rem;
+  }
+  .ai-flow .principle-index {
+    grid-row: span 2;
+    padding-top: 0.125rem;
+  }
+  .ai-flow h3 {
+    font-size: 1.0625rem;
+  }
+  .bridge {
+    display: grid;
+    gap: 1rem;
+    padding: clamp(1.5rem, 4vw, 2rem);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+  }
+  .bridge .side-name a {
+    font-family: var(--font-mono);
+  }
+  .bridge-facts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    list-style: none;
+    padding-block: 1rem;
+    border-block: 1px solid var(--line);
+  }
+  .bridge-facts li {
+    display: grid;
+    gap: 0.125rem;
+  }
+  .bridge-facts strong {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+  .bridge-facts span {
+    font-size: 0.8125rem;
+    line-height: 1.35;
+  }
+  .bridge-extra {
+    font-size: 0.9375rem;
   }
   .about-grid {
     display: grid;

@@ -40,13 +40,13 @@ const repo = (name: string) => `github.com/Ranta2025/${name}`;
 export const cv: Record<Lang, CvContent> = {
   en: {
     lang: "en",
-    role: "Software Engineer — Backend, offline-first systems & AI-assisted delivery",
+    role: "Full-Stack Software Engineer · AI-native development",
     location: "Havana, Cuba · relocating to La Palma, Spain",
     authorization: "Spanish citizen · EU work authorization",
     labels: {
       summary: "Profile",
       experience: "Freelance experience",
-      ai: "AI-assisted engineering",
+      ai: "AI-native engineering",
       projects: "Selected projects",
       skills: "Skills",
       education: "Education",
@@ -55,7 +55,7 @@ export const cv: Record<Lang, CvContent> = {
       otherLang: "Versión en español",
     },
     summary:
-      "Software engineer who ships complete products for real users, from requirements to tests, packaging and support. Backends in Go and TypeScript; offline-first clients in Flutter, Godot and Python for low-end hardware and unreliable networks. I work AI-first: I direct coding agents through written specs, reviewable units and tests, built my own tooling to orchestrate them, and own every line that ships.",
+      "Full-stack software engineer who ships complete products for real clients, from requirements to tests, packaging and support: Go and TypeScript backends, React web apps, Flutter mobile and Python desktop tools. I work AI-native: I direct coding agents through written specs, reviewable units and tests, built open-source tooling to orchestrate them, and own every line that ships.",
     experience: [
       {
         title: "Salon Manager — offline-first mobile app",
@@ -119,13 +119,13 @@ export const cv: Record<Lang, CvContent> = {
   },
   es: {
     lang: "es",
-    role: "Ingeniero de software — Backend, sistemas offline-first y desarrollo asistido por IA",
+    role: "Ingeniero de software full stack · desarrollo nativo con IA",
     location: "La Habana, Cuba · traslado a La Palma, España",
     authorization: "Ciudadano español · permiso de trabajo en la UE",
     labels: {
       summary: "Perfil",
       experience: "Experiencia freelance",
-      ai: "Ingeniería asistida por IA",
+      ai: "Ingeniería con IA",
       projects: "Proyectos destacados",
       skills: "Competencias",
       education: "Formación",
@@ -134,7 +134,7 @@ export const cv: Record<Lang, CvContent> = {
       otherLang: "English version",
     },
     summary:
-      "Ingeniero de software que entrega productos completos a usuarios reales, desde los requisitos hasta las pruebas, el empaquetado y el soporte. Backends en Go y TypeScript; clientes offline-first en Flutter, Godot y Python para hardware modesto y redes poco fiables. Trabajo con IA como primera herramienta: dirijo agentes de código con especificaciones, unidades revisables y pruebas, construí mis herramientas para orquestarlos y respondo por cada línea entregada.",
+      "Ingeniero de software full stack que entrega productos completos a clientes reales, desde los requisitos hasta las pruebas, el empaquetado y el soporte: backends en Go y TypeScript, web en React, móvil en Flutter y escritorio en Python. Trabajo de forma nativa con IA: dirijo agentes de código con especificaciones, unidades revisables y pruebas, publiqué herramientas propias para orquestarlos y respondo por cada línea entregada.",
     experience: [
       {
         title: "Gestión Salón — app móvil offline-first",
