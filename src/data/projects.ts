@@ -293,16 +293,4 @@ export const sideProjects: SideProject[] = [
     repo: privateRepo,
     status: "Product in development",
   },
-  {
-    title: "Math III exam prep",
-    summary: "Interactive site with step-by-step theory and auto-graded exercises.",
-    stack: ["JavaScript"],
-    repo: gh("matematica-iii-suficiencia"),
-  },
-  {
-    title: "Data Structures II study guide",
-    summary: "220+ bilingual Java exercises: heaps, hashing, skip lists, graphs, union-find.",
-    stack: ["Java"],
-    repo: gh("data-structures-ii-study-guide"),
-  },
 ];

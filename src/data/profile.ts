@@ -19,7 +19,7 @@ export const profile: Profile = {
   role: "Full-Stack Software Engineer",
   headline: "Full-stack engineer shipping real products with AI agents in the loop.",
   intro:
-    "Go and TypeScript backends, React web apps, Flutter mobile apps and desktop tools, delivered end to end for real clients. I work AI-native: coding agents implement from my specs, every change passes tests and my own review, and I built open-source tooling to orchestrate them.",
+    "Go and TypeScript backends, React web apps, Flutter mobile apps and desktop tools, delivered end to end for real clients. I work AI-native: coding agents implement from my specs, and every change passes tests and my own review before it lands.",
   location: { current: "Havana, Cuba", next: "La Palma, Spain" },
   workAuthorization: "Spanish citizen — authorized to work in the EU, no visa required",
   availability: "Open to remote and on-site roles",
