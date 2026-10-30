@@ -1,0 +1,305 @@
+---
+import Base from "../../layouts/Base.astro";
+import DeviceShot from "../../components/DeviceShot.astro";
+import RepoLink from "../../components/RepoLink.astro";
+import { caseStudies, type CaseStudy } from "../../data/projects";
+import { resolveShots } from "../../lib/shots";
+
+export function getStaticPaths() {
+  return caseStudies.map((study, index) => ({
+    params: { slug: study.slug },
+    props: { study, next: caseStudies[(index + 1) % caseStudies.length] },
+  }));
+}
+
+interface Props {
+  study: CaseStudy;
+  next: CaseStudy;
+}
+
+const { study, next } = Astro.props;
+const [lead, ...gallery] = resolveShots(study.slug, study.shots);
+const phoneGallery = gallery.length > 0 && gallery.every((s) => s.frame === "phone");
+---
+
+<Base title={study.title} description={study.summary}>
+  <article class="case">
+    <header class="container case-head">
+      <a class="back mono" href="/#work">← All work</a>
+      <p class="eyebrow">{study.kind}</p>
+      <h1 class="case-title">{study.title}</h1>
+      <p class="case-summary muted">{study.summary}</p>
+    </header>
+
+    {
+      lead && (
+        <div class="container">
+          <div class="lead-panel">
+            <DeviceShot shot={lead} sizes="(min-width: 64rem) 56rem, 92vw" eager />
+          </div>
+        </div>
+      )
+    }
+
+    <div class="container">
+      <ul class="metrics" aria-label="Key numbers">
+        {
+          study.metrics.map((m) => (
+            <li>
+              <strong>{m.value}</strong>
+              <span class="muted">{m.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="container case-body">
+      <aside class="case-aside">
+        <dl class="meta">
+          <div><dt>Period</dt><dd>{study.period}</dd></div>
+          <div><dt>Status</dt><dd>{study.status}</dd></div>
+          <div><dt>Source</dt><dd><RepoLink repo={study.repo} /></dd></div>
+          {
+            study.live && (
+              <div>
+                <dt>Live</dt>
+                <dd>
+                  <a href={study.live} rel="noopener noreferrer" target="_blank">Open the app</a>
+                </dd>
+              </div>
+            )
+          }
+          <div>
+            <dt>Stack</dt>
+            <dd><ul class="tags">{study.stack.map((s) => <li>{s}</li>)}</ul></dd>
+          </div>
+        </dl>
+      </aside>
+
+      <div class="case-main">
+        <section class="block">
+          <h2 class="eyebrow">Context</h2>
+          <p class="lead">{study.context}</p>
+        </section>
+
+        <section class="block">
+          <h2 class="eyebrow">Constraints</h2>
+          <ul class="list">{study.constraints.map((c) => <li>{c}</li>)}</ul>
+        </section>
+
+        <section class="block">
+          <h2 class="eyebrow">Key decisions</h2>
+          <ol class="decisions">
+            {
+              study.decisions.map((d, i) => (
+                <li>
+                  <span class="mono decision-index">{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3>{d.choice}</h3>
+                    <p class="muted">{d.why}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+        </section>
+
+        <section class="block">
+          <h2 class="eyebrow">What I built</h2>
+          <ul class="list">{study.built.map((b) => <li>{b}</li>)}</ul>
+          {study.note && <p class="note">{study.note}</p>}
+        </section>
+      </div>
+    </div>
+
+    {
+      gallery.length > 0 && (
+        <section class="container gallery-section" aria-label="Screenshots">
+          <h2 class="eyebrow">Screens</h2>
+          <div class:list={["gallery", { "gallery--phones": phoneGallery }]}>
+            {gallery.map((shot) => (
+              <DeviceShot
+                shot={shot}
+                sizes={phoneGallery ? "18rem" : "(min-width: 64rem) 30rem, 92vw"}
+                caption
+              />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <nav class="container next" aria-label="Next case study">
+      <span class="eyebrow">Next case</span>
+      <a href={`/work/${next.slug}/`}>{next.title} →</a>
+    </nav>
+  </article>
+</Base>
+
+<style>
+  .case {
+    padding-block: clamp(2.5rem, 7vw, 4rem) clamp(3rem, 8vw, 5rem);
+  }
+  .case-head {
+    display: grid;
+    gap: 1rem;
+  }
+  .back {
+    justify-self: start;
+    color: var(--muted);
+    text-decoration: none;
+    margin-bottom: 1rem;
+  }
+  .case-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+  }
+  .case-summary {
+    font-size: 1.1875rem;
+    max-width: var(--measure);
+  }
+  .lead-panel {
+    display: grid;
+    place-items: center;
+    margin-top: 2.5rem;
+    padding: clamp(1.25rem, 5vw, 3.5rem);
+    background: var(--panel);
+    border-radius: 16px;
+  }
+  .lead-panel :global(.device--browser),
+  .lead-panel :global(.device--window),
+  .lead-panel :global(.device--landscape) {
+    width: min(100%, 56rem);
+  }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(9rem, 100%), 1fr));
+    gap: 1px;
+    margin-block: 2.5rem 1rem;
+    list-style: none;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .metrics li {
+    display: grid;
+    gap: 0.25rem;
+    padding: 1.25rem;
+    background: var(--bg);
+  }
+  .metrics strong {
+    font-family: var(--font-serif);
+    font-size: 1.875rem;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+  .metrics span {
+    font-size: 0.875rem;
+  }
+
+  .case-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem 4rem;
+  }
+  .meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
+    gap: 1.25rem 2rem;
+    margin: 0;
+    padding-block: 1.5rem;
+    font-size: 0.9375rem;
+  }
+  .meta dt {
+    font-size: 0.8125rem;
+    color: var(--faint);
+    margin-bottom: 0.25rem;
+  }
+  .meta dd {
+    margin: 0;
+  }
+  @media (min-width: 60rem) {
+    .case-body {
+      grid-template-columns: 15rem minmax(0, 1fr);
+    }
+    .case-aside {
+      position: sticky;
+      top: 5rem;
+      align-self: start;
+    }
+    .meta {
+      grid-template-columns: 1fr;
+      padding-top: 2rem;
+    }
+  }
+
+  .block {
+    display: grid;
+    gap: 1rem;
+    padding-block: 2rem;
+    border-top: 1px solid var(--line);
+    max-width: var(--measure);
+  }
+  .lead {
+    font-size: 1.125rem;
+  }
+  .decisions {
+    display: grid;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+  }
+  .decisions li {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.5rem;
+  }
+  .decision-index {
+    color: var(--accent);
+    padding-top: 0.2rem;
+  }
+  .decisions h3 {
+    font-size: 1.0625rem;
+    margin-bottom: 0.25rem;
+  }
+  .note {
+    padding: 0.75rem 1rem;
+    background: var(--surface);
+    border-left: 2px solid var(--accent);
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
+  .gallery-section {
+    display: grid;
+    gap: 1.5rem;
+    padding-block: 2.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(24rem, 100%), 1fr));
+    gap: 2.5rem 2rem;
+    align-items: start;
+  }
+  .gallery--phones {
+    grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+  }
+
+  .next {
+    display: grid;
+    gap: 0.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .next a {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    text-decoration: none;
+  }
+</style>
